@@ -19,6 +19,7 @@ This file is a living index of short reading notes for the course. Keep entries 
 ## Index of Entries
 
 - GCC `-g` (Debug symbols) — 2026-02-14 — see: [GCC `-g` and debug symbols](#gcc-g-and-debug-symbols)
+- What is GDB? — 2026-02-15 - see: [What is GDB?](#what-is-gdb)
 
 ## Entry 1: GCC `-g` and debug symbols
 
@@ -76,6 +77,30 @@ Notes:
 References/Assets:
 
 ![assets/Binary_Size](assets/Binary_Size.png "Binary Size")
+
+## Entry 2: What is GDB?
+
+- **Date:** 2026-02-15
+- **Tags:** gcc, debugging, introduction
+
+Summary:
+
+GDB (GNU Debugger) is a powerful tool for debugging C/C++ programs. It allows you to inspect the state of a program at runtime, set breakpoints, and analyze crashes.
+
+![assets/GDB_Intro](assets/GDB_Intro.png "GDB Intro")
+
+Able to debug C/C++ programs compiled with `-g` for debug symbols.
+
+Key points:
+
+- GDB is utility part of program within GCC toolchain. Generally available by default on Linux operating systems.
+- Installation
+    - On Debian/Ubuntu: `sudo apt install gdb-multiarch`
+- Using GDB, we can able to
+    - debug the program running on the host machine
+    - debug the program running on a remote machine (e.g., embedded device/development board) where we have microcontroller or microprocessor running the program.
+- Main Features:
+    ![assets/GDB_Main_Features](assets/GDB_Main_Features.png "GDB Main_Features")
 
 ## Entry Template (how to add a new note)
 

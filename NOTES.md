@@ -2,7 +2,7 @@
 
 - **Maintainer:** Notes for personal study and future additions
 - **Date created:** 2026-02-14
-- **Last updated:** 2026-02-14
+- **Last updated:** 2026-02-17
 
 ## Purpose
 
@@ -20,7 +20,9 @@ This file is a living index of short reading notes for the course. Keep entries 
 
 - GCC `-g` (Debug symbols) — 2026-02-14 — see: [GCC `-g` and debug symbols](#gcc-g-and-debug-symbols)
 - What is GDB? — 2026-02-15 - see: [What is GDB?](#what-is-gdb)
+- GDB Inner Working Mechanism & ptrace — 2026-02-17 - see: [GDB Inner Working Mechanism & ptrace](#gdb-inner-working-mechanism-ptrace)
 
+<a id="gcc-g-and-debug-symbols"></a>
 ## Entry 1: GCC `-g` and debug symbols
 
 - **Date:** 2026-02-14
@@ -78,6 +80,7 @@ References/Assets:
 
 ![assets/Binary_Size](assets/Binary_Size.png "Binary Size")
 
+<a id="what-is-gdb"></a>
 ## Entry 2: What is GDB?
 
 - **Date:** 2026-02-15
@@ -102,6 +105,30 @@ Key points:
 - Main Features:
     ![assets/GDB_Main_Features](assets/GDB_Main_Features.png "GDB Main_Features")
 
+
+<a id="gdb-inner-working-mechanism-ptrace"></a>
+## Entry 3: GDB Inner Working Mechanism & ptrace
+
+- **Date:** 2026-02-17
+- **Tags:** gdb, debugging, ptrace
+
+Summary:
+
+GDB uses the `ptrace` system call to control and inspect the execution of another process. This allows GDB to set breakpoints, read/write memory, and manipulate the target process. We can use GDB for debugging below scenarios:
+
+- Local Application
+- Remote Target (e.g., Raspberry Pi)
+    - GDB Server (e.g., gdbserver) running on the remote target over network connection (e.g., TCP/IP)
+        - IP Address with Port Number will be used to connect from GDB client to GDB server
+- Remote Target (e.g., development board without network capability)
+    - Hardware Debugger (e.g., JTAG, SWD) connected to the remote target
+        - This hardware debugger (in other words GDB server) acts as a bridge between GDB client and the remote target, allowing for debugging over a physical connection.
+    - Debugging Client runs on the host machine and converts the GDB commands into a format that the hardware debugger can understand, facilitating communication between GDB and the remote target.
+        - Serial Connection (e.g., UART) between host machine and remote target
+        - Serial Port with Baud Rate will be used to connect from GDB client to GDB server
+
+![assets/GDB_with_ptrace](assets/GDB_with_ptrace.png "GDB with ptrace")
+
 ## Entry Template (how to add a new note)
 
 Use the following minimal structure for each new entry to keep things consistent:
@@ -115,6 +142,13 @@ Use the following minimal structure for each new entry to keep things consistent
 - **Commands:** code block of commands
 - **Notes:** additional commentary
 - **References:** links to assets or files
+
+Tip — stable links: add an explicit HTML anchor before the entry heading so index links remain predictable. Example:
+
+<a id="your-topic-slug"></a>
+## Your Title
+
+Guidelines for slugs: use only lowercase letters, numbers and hyphens (e.g. `gcc-g-and-debug-symbols`).
 
 Example (copy and paste to add):
 

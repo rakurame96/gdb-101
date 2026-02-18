@@ -60,7 +60,15 @@ file main
 
 (gdb) break 6 # Set a breakpoint at line 6
 
+(gdb) file <file_name.out/.exe> # Load the executable file into gdb
+
 (gdb) run # Start the program
+
+(gdb) run <file_name.out/.exe> # Start the program with input file
+
+(gdb) break main.c:12 # Set a breakpoint at line 12 of main.c
+
+(gdb) continue/c # Continue running the program until the next breakpoint or end
 
 (gdb) backtrace/bt # Show the call stack
 
@@ -70,6 +78,35 @@ stack frame
 (gdb) print variable_name # Print the value of a variable
 
 (gdb) next # Step to the next line of code (without stepping into functions)
+
+(gdb) step # Step into the next line of code (stepping into functions)
+
+(gdb) info breakpoints # List all breakpoints
+
+(gdb) delete # Delete all breakpoints
+
+(gdb) delete <breakpoint_number> # Delete a specific breakpoint by its number
+
+(gdb) clear main # Clear the breakpoint at function main
+
+(gdb) clear main.c:12 # Clear the breakpoint at line 12 of main.c
+
+(gdb) disable <breakpoint_number> # Disable a specific breakpoint by its number
+
+(gdb) disable main.c:12 # Disable the breakpoint at line 12 of main.c
+
+(gdb) enable <breakpoint_number> # Enable a specific breakpoint by its number
+
+(gdb) enable main.c:12 # Enable the breakpoint at line 12 of main.c
+
+(gdb) quit # Exit gdb
+
+# Customize gdb prompt
+(gdb) set disable-randomization off # Disable ASLR (Address Space Layout Randomization) for more consistent debugging
+
+(gdb) set debuginfod enabled off # Disable debuginfod to prevent gdb from fetching debug symbols from the network
+
+
 ```
 
 Notes:
